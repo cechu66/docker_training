@@ -1,0 +1,19 @@
+lamp:
+  build: .
+  ports:
+  - "9090:80"
+  environment:
+  - PROJECT_NAME=blog
+  volumes:
+  - "/Users/nobita-isc/training/docker/blog:/var/www/html/blog"
+  container_name: laravel_test
+  links:
+  - "database:database"
+
+database:
+  image: mysql:latest
+  volumes:
+  - "/Users/nobita-isc/training/docker/data:/var/lib/mysql"
+  container_name: database
+  environment:
+  - MYSQL_ROOT_PASSWORD=jp1ajs3
